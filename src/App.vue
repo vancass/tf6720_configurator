@@ -1,28 +1,41 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app"> 
+    <button @click="arburgPage(false)">Normal</button>
+    <button @click="arburgPage(true)">Arburg</button> 
+    <MainPage v-show="!arburg"></MainPage>
+    <Arburg v-show="arburg"></Arburg>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MainPage from "./views/MainPage.vue";
+import Arburg from "./views/Arburg.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    MainPage,
+    Arburg
+  },
+  data: function() {
+    return {
+      arburg: true
+    };
+  },
+
+  methods: {
+    arburgPage(value) {
+      this.arburg = value;
+    }
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
